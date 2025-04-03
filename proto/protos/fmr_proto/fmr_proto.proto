@@ -1,3 +1,7 @@
+syntax = "proto3";
+
+import "mavsdk_options.proto";
+
 service FmrService {
     // Subscribe to 'position' updates.
     rpc SubscribePosition(SubscribeGPSInfoRequest) returns(stream GPSInfoResponse) {}
@@ -7,7 +11,7 @@ service FmrService {
 
 }
 
-message SubscribePositionRequest {}
+message SubscribeGPSInfoRequest {}
 message GPSInfoResponse {
     GPSInfo gpsinfo = 1; // The next position
 }
@@ -21,6 +25,24 @@ message SetRateGPSInfoResponse {
 
 // Position type in global coordinates.
 message GPSInfo {
-    uint32_t time_week_ms = 1 [(mavsdk.options.default_value)="NaN"]; // GPS time (from start of GPS week)
-    uint16_t time_week = 2 [(mavsdk.options.default_value)="NaN"]; // GPS week number
+    double time_week_ms = 1 [(mavsdk.options.default_value)="NaN"]; // GPS time (from start of GPS week)
+    double time_week = 2 [(mavsdk.options.default_value)="NaN"]; // GPS week number
+}
+
+// Result type.
+message TelemetryResult {
+    // Possible results returned for telemetry requests.
+    enum Result {
+        RESULT_UNKNOWN = 0; // Unknown result
+        RESULT_SUCCESS = 1; // Success: the telemetry command was accepted by the vehicle
+        RESULT_NO_SYSTEM = 2; // No system connected
+        RESULT_CONNECTION_ERROR = 3; // Connection error
+        RESULT_BUSY = 4; // Vehicle is busy
+        RESULT_COMMAND_DENIED = 5; // Command refused by vehicle
+        RESULT_TIMEOUT = 6; // Request timed out
+        RESULT_UNSUPPORTED = 7; // Request not supported
+    }
+
+    Result result = 1; // Result enum value
+    string result_str = 2; // Human-readable English string describing the result
 }

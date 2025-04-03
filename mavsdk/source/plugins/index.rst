@@ -47,3 +47,4 @@ Plugins
    component_metadata_server
    log_streaming
    events
+   fmr_proto
