@@ -34,30 +34,30 @@ class FmrServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.SubscribePosition = channel.unary_stream(
-                '/mavsdk.rpc.fmr.FmrService/SubscribePosition',
-                request_serializer=fmr_dot_fmr__pb2.SubscribeGPSInfoRequest.SerializeToString,
-                response_deserializer=fmr_dot_fmr__pb2.GPSInfoResponse.FromString,
+        self.SubscribeGpsInfo = channel.unary_stream(
+                '/mavsdk.rpc.fmr.FmrService/SubscribeGpsInfo',
+                request_serializer=fmr_dot_fmr__pb2.SubscribeGpsInfoRequest.SerializeToString,
+                response_deserializer=fmr_dot_fmr__pb2.GpsInfoResponse.FromString,
                 _registered_method=True)
-        self.SetRatePosition = channel.unary_unary(
-                '/mavsdk.rpc.fmr.FmrService/SetRatePosition',
-                request_serializer=fmr_dot_fmr__pb2.SetRateGPSInfoRequest.SerializeToString,
-                response_deserializer=fmr_dot_fmr__pb2.SetRateGPSInfoResponse.FromString,
+        self.SetRateGpsInfo = channel.unary_unary(
+                '/mavsdk.rpc.fmr.FmrService/SetRateGpsInfo',
+                request_serializer=fmr_dot_fmr__pb2.SetRateGpsInfoRequest.SerializeToString,
+                response_deserializer=fmr_dot_fmr__pb2.SetRateGpsInfoResponse.FromString,
                 _registered_method=True)
 
 
 class FmrServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def SubscribePosition(self, request, context):
-        """Subscribe to 'position' updates.
+    def SubscribeGpsInfo(self, request, context):
+        """Subscribe to 'GPSInfo' updates.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def SetRatePosition(self, request, context):
-        """Set rate to 'position' updates.
+    def SetRateGpsInfo(self, request, context):
+        """Set rate to 'GpsInfo' updates.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -66,15 +66,15 @@ class FmrServiceServicer(object):
 
 def add_FmrServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'SubscribePosition': grpc.unary_stream_rpc_method_handler(
-                    servicer.SubscribePosition,
-                    request_deserializer=fmr_dot_fmr__pb2.SubscribeGPSInfoRequest.FromString,
-                    response_serializer=fmr_dot_fmr__pb2.GPSInfoResponse.SerializeToString,
+            'SubscribeGpsInfo': grpc.unary_stream_rpc_method_handler(
+                    servicer.SubscribeGpsInfo,
+                    request_deserializer=fmr_dot_fmr__pb2.SubscribeGpsInfoRequest.FromString,
+                    response_serializer=fmr_dot_fmr__pb2.GpsInfoResponse.SerializeToString,
             ),
-            'SetRatePosition': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetRatePosition,
-                    request_deserializer=fmr_dot_fmr__pb2.SetRateGPSInfoRequest.FromString,
-                    response_serializer=fmr_dot_fmr__pb2.SetRateGPSInfoResponse.SerializeToString,
+            'SetRateGpsInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetRateGpsInfo,
+                    request_deserializer=fmr_dot_fmr__pb2.SetRateGpsInfoRequest.FromString,
+                    response_serializer=fmr_dot_fmr__pb2.SetRateGpsInfoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -88,7 +88,7 @@ class FmrService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def SubscribePosition(request,
+    def SubscribeGpsInfo(request,
             target,
             options=(),
             channel_credentials=None,
@@ -101,9 +101,9 @@ class FmrService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/mavsdk.rpc.fmr.FmrService/SubscribePosition',
-            fmr_dot_fmr__pb2.SubscribeGPSInfoRequest.SerializeToString,
-            fmr_dot_fmr__pb2.GPSInfoResponse.FromString,
+            '/mavsdk.rpc.fmr.FmrService/SubscribeGpsInfo',
+            fmr_dot_fmr__pb2.SubscribeGpsInfoRequest.SerializeToString,
+            fmr_dot_fmr__pb2.GpsInfoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -115,7 +115,7 @@ class FmrService(object):
             _registered_method=True)
 
     @staticmethod
-    def SetRatePosition(request,
+    def SetRateGpsInfo(request,
             target,
             options=(),
             channel_credentials=None,
@@ -128,9 +128,9 @@ class FmrService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/mavsdk.rpc.fmr.FmrService/SetRatePosition',
-            fmr_dot_fmr__pb2.SetRateGPSInfoRequest.SerializeToString,
-            fmr_dot_fmr__pb2.SetRateGPSInfoResponse.FromString,
+            '/mavsdk.rpc.fmr.FmrService/SetRateGpsInfo',
+            fmr_dot_fmr__pb2.SetRateGpsInfoRequest.SerializeToString,
+            fmr_dot_fmr__pb2.SetRateGpsInfoResponse.FromString,
             options,
             channel_credentials,
             insecure,

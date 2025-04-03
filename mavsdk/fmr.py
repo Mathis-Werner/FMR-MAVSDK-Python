@@ -6,9 +6,9 @@ from . import fmr_pb2, fmr_pb2_grpc
 from enum import Enum
 
 
-class GPSInfo:
+class GpsInfo:
     """
-     Position type in global coordinates.
+     GPSinfo type in global coordinates.
 
      Parameters
      ----------
@@ -26,15 +26,15 @@ class GPSInfo:
             self,
             time_week_ms,
             time_week):
-        """ Initializes the GPSInfo object """
+        """ Initializes the GpsInfo object """
         self.time_week_ms = time_week_ms
         self.time_week = time_week
 
     def __eq__(self, to_compare):
-        """ Checks if two GPSInfo are the same """
+        """ Checks if two GpsInfo are the same """
         try:
             # Try to compare - this likely fails when it is compared to a non
-            # GPSInfo object
+            # GpsInfo object
             return \
                 (self.time_week_ms == to_compare.time_week_ms) and \
                 (self.time_week == to_compare.time_week)
@@ -43,44 +43,44 @@ class GPSInfo:
             return False
 
     def __str__(self):
-        """ GPSInfo in string representation """
+        """ GpsInfo in string representation """
         struct_repr = ", ".join([
                 "time_week_ms: " + str(self.time_week_ms),
                 "time_week: " + str(self.time_week)
                 ])
 
-        return f"GPSInfo: [{struct_repr}]"
+        return f"GpsInfo: [{struct_repr}]"
 
     @staticmethod
-    def translate_from_rpc(rpcGPSInfo):
+    def translate_from_rpc(rpcGpsInfo):
         """ Translates a gRPC struct to the SDK equivalent """
-        return GPSInfo(
+        return GpsInfo(
                 
-                rpcGPSInfo.time_week_ms,
+                rpcGpsInfo.time_week_ms,
                 
                 
-                rpcGPSInfo.time_week
+                rpcGpsInfo.time_week
                 )
 
-    def translate_to_rpc(self, rpcGPSInfo):
+    def translate_to_rpc(self, rpcGpsInfo):
         """ Translates this SDK object into its gRPC equivalent """
 
         
         
             
-        rpcGPSInfo.time_week_ms = self.time_week_ms
+        rpcGpsInfo.time_week_ms = self.time_week_ms
             
         
         
         
             
-        rpcGPSInfo.time_week = self.time_week
+        rpcGpsInfo.time_week = self.time_week
             
         
         
 
 
-class TelemetryResult:
+class GpsInfoResult:
     """
      Result type.
 
@@ -139,42 +139,42 @@ class TelemetryResult:
         UNSUPPORTED = 7
 
         def translate_to_rpc(self):
-            if self == TelemetryResult.Result.UNKNOWN:
-                return fmr_pb2.TelemetryResult.RESULT_UNKNOWN
-            if self == TelemetryResult.Result.SUCCESS:
-                return fmr_pb2.TelemetryResult.RESULT_SUCCESS
-            if self == TelemetryResult.Result.NO_SYSTEM:
-                return fmr_pb2.TelemetryResult.RESULT_NO_SYSTEM
-            if self == TelemetryResult.Result.CONNECTION_ERROR:
-                return fmr_pb2.TelemetryResult.RESULT_CONNECTION_ERROR
-            if self == TelemetryResult.Result.BUSY:
-                return fmr_pb2.TelemetryResult.RESULT_BUSY
-            if self == TelemetryResult.Result.COMMAND_DENIED:
-                return fmr_pb2.TelemetryResult.RESULT_COMMAND_DENIED
-            if self == TelemetryResult.Result.TIMEOUT:
-                return fmr_pb2.TelemetryResult.RESULT_TIMEOUT
-            if self == TelemetryResult.Result.UNSUPPORTED:
-                return fmr_pb2.TelemetryResult.RESULT_UNSUPPORTED
+            if self == GpsInfoResult.Result.UNKNOWN:
+                return fmr_pb2.GpsInfoResult.RESULT_UNKNOWN
+            if self == GpsInfoResult.Result.SUCCESS:
+                return fmr_pb2.GpsInfoResult.RESULT_SUCCESS
+            if self == GpsInfoResult.Result.NO_SYSTEM:
+                return fmr_pb2.GpsInfoResult.RESULT_NO_SYSTEM
+            if self == GpsInfoResult.Result.CONNECTION_ERROR:
+                return fmr_pb2.GpsInfoResult.RESULT_CONNECTION_ERROR
+            if self == GpsInfoResult.Result.BUSY:
+                return fmr_pb2.GpsInfoResult.RESULT_BUSY
+            if self == GpsInfoResult.Result.COMMAND_DENIED:
+                return fmr_pb2.GpsInfoResult.RESULT_COMMAND_DENIED
+            if self == GpsInfoResult.Result.TIMEOUT:
+                return fmr_pb2.GpsInfoResult.RESULT_TIMEOUT
+            if self == GpsInfoResult.Result.UNSUPPORTED:
+                return fmr_pb2.GpsInfoResult.RESULT_UNSUPPORTED
 
         @staticmethod
         def translate_from_rpc(rpc_enum_value):
             """ Parses a gRPC response """
-            if rpc_enum_value == fmr_pb2.TelemetryResult.RESULT_UNKNOWN:
-                return TelemetryResult.Result.UNKNOWN
-            if rpc_enum_value == fmr_pb2.TelemetryResult.RESULT_SUCCESS:
-                return TelemetryResult.Result.SUCCESS
-            if rpc_enum_value == fmr_pb2.TelemetryResult.RESULT_NO_SYSTEM:
-                return TelemetryResult.Result.NO_SYSTEM
-            if rpc_enum_value == fmr_pb2.TelemetryResult.RESULT_CONNECTION_ERROR:
-                return TelemetryResult.Result.CONNECTION_ERROR
-            if rpc_enum_value == fmr_pb2.TelemetryResult.RESULT_BUSY:
-                return TelemetryResult.Result.BUSY
-            if rpc_enum_value == fmr_pb2.TelemetryResult.RESULT_COMMAND_DENIED:
-                return TelemetryResult.Result.COMMAND_DENIED
-            if rpc_enum_value == fmr_pb2.TelemetryResult.RESULT_TIMEOUT:
-                return TelemetryResult.Result.TIMEOUT
-            if rpc_enum_value == fmr_pb2.TelemetryResult.RESULT_UNSUPPORTED:
-                return TelemetryResult.Result.UNSUPPORTED
+            if rpc_enum_value == fmr_pb2.GpsInfoResult.RESULT_UNKNOWN:
+                return GpsInfoResult.Result.UNKNOWN
+            if rpc_enum_value == fmr_pb2.GpsInfoResult.RESULT_SUCCESS:
+                return GpsInfoResult.Result.SUCCESS
+            if rpc_enum_value == fmr_pb2.GpsInfoResult.RESULT_NO_SYSTEM:
+                return GpsInfoResult.Result.NO_SYSTEM
+            if rpc_enum_value == fmr_pb2.GpsInfoResult.RESULT_CONNECTION_ERROR:
+                return GpsInfoResult.Result.CONNECTION_ERROR
+            if rpc_enum_value == fmr_pb2.GpsInfoResult.RESULT_BUSY:
+                return GpsInfoResult.Result.BUSY
+            if rpc_enum_value == fmr_pb2.GpsInfoResult.RESULT_COMMAND_DENIED:
+                return GpsInfoResult.Result.COMMAND_DENIED
+            if rpc_enum_value == fmr_pb2.GpsInfoResult.RESULT_TIMEOUT:
+                return GpsInfoResult.Result.TIMEOUT
+            if rpc_enum_value == fmr_pb2.GpsInfoResult.RESULT_UNSUPPORTED:
+                return GpsInfoResult.Result.UNSUPPORTED
 
         def __str__(self):
             return self.name
@@ -184,15 +184,15 @@ class TelemetryResult:
             self,
             result,
             result_str):
-        """ Initializes the TelemetryResult object """
+        """ Initializes the GpsInfoResult object """
         self.result = result
         self.result_str = result_str
 
     def __eq__(self, to_compare):
-        """ Checks if two TelemetryResult are the same """
+        """ Checks if two GpsInfoResult are the same """
         try:
             # Try to compare - this likely fails when it is compared to a non
-            # TelemetryResult object
+            # GpsInfoResult object
             return \
                 (self.result == to_compare.result) and \
                 (self.result_str == to_compare.result_str)
@@ -201,38 +201,38 @@ class TelemetryResult:
             return False
 
     def __str__(self):
-        """ TelemetryResult in string representation """
+        """ GpsInfoResult in string representation """
         struct_repr = ", ".join([
                 "result: " + str(self.result),
                 "result_str: " + str(self.result_str)
                 ])
 
-        return f"TelemetryResult: [{struct_repr}]"
+        return f"GpsInfoResult: [{struct_repr}]"
 
     @staticmethod
-    def translate_from_rpc(rpcTelemetryResult):
+    def translate_from_rpc(rpcGpsInfoResult):
         """ Translates a gRPC struct to the SDK equivalent """
-        return TelemetryResult(
+        return GpsInfoResult(
                 
-                TelemetryResult.Result.translate_from_rpc(rpcTelemetryResult.result),
+                GpsInfoResult.Result.translate_from_rpc(rpcGpsInfoResult.result),
                 
                 
-                rpcTelemetryResult.result_str
+                rpcGpsInfoResult.result_str
                 )
 
-    def translate_to_rpc(self, rpcTelemetryResult):
+    def translate_to_rpc(self, rpcGpsInfoResult):
         """ Translates this SDK object into its gRPC equivalent """
 
         
         
             
-        rpcTelemetryResult.result = self.result.translate_to_rpc()
+        rpcGpsInfoResult.result = self.result.translate_to_rpc()
             
         
         
         
             
-        rpcTelemetryResult.result_str = self.result_str
+        rpcGpsInfoResult.result_str = self.result_str
             
         
         
@@ -271,33 +271,33 @@ class Fmr(AsyncBase):
         return FmrResult.translate_from_rpc(response.fmr_result)
     
 
-    async def position(self):
+    async def gps_info(self):
         """
-         Subscribe to 'position' updates.
+         Subscribe to 'GPSInfo' updates.
 
          Yields
          -------
-         gpsinfo : GPSInfo
-              The next position
+         gpsinfo : GpsInfo
+              The next GPSinfo
 
          
         """
 
-        request = fmr_pb2.SubscribePositionRequest()
-        position_stream = self._stub.SubscribePosition(request)
+        request = fmr_pb2.SubscribeGpsInfoRequest()
+        gps_info_stream = self._stub.SubscribeGpsInfo(request)
 
         try:
-            async for response in position_stream:
+            async for response in gps_info_stream:
                 
 
             
-                yield GPSInfo.translate_from_rpc(response.gpsinfo)
+                yield GpsInfo.translate_from_rpc(response.gpsinfo)
         finally:
-            position_stream.cancel()
+            gps_info_stream.cancel()
 
-    async def set_rate_position(self, rate_hz):
+    async def set_rate_gps_info(self, rate_hz):
         """
-         Set rate to 'position' updates.
+         Set rate to 'GpsInfo' updates.
 
          Parameters
          ----------
@@ -310,13 +310,13 @@ class Fmr(AsyncBase):
              If the request fails. The error contains the reason for the failure.
         """
 
-        request = fmr_pb2.SetRatePositionRequest()
+        request = fmr_pb2.SetRateGpsInfoRequest()
         request.rate_hz = rate_hz
-        response = await self._stub.SetRatePosition(request)
+        response = await self._stub.SetRateGpsInfo(request)
 
         
         result = self._extract_result(response)
 
         if result.result != FmrResult.Result.SUCCESS:
-            raise FmrError(result, "set_rate_position()", rate_hz)
+            raise FmrError(result, "set_rate_gps_info()", rate_hz)
         

@@ -8,34 +8,34 @@ option java_package = "io.mavsdk.fmr";
 option java_outer_classname = "FmrProto";
 
 service FmrService {
-    // Subscribe to 'position' updates.
-    rpc SubscribePosition(SubscribeGPSInfoRequest) returns(stream GPSInfoResponse) {}
+    // Subscribe to 'GPSInfo' updates.
+    rpc SubscribeGpsInfo(SubscribeGpsInfoRequest) returns(stream GpsInfoResponse) {}
 
-    // Set rate to 'position' updates.
-    rpc SetRatePosition(SetRateGPSInfoRequest) returns(SetRateGPSInfoResponse) {}
+    // Set rate to 'GpsInfo' updates.
+    rpc SetRateGpsInfo(SetRateGpsInfoRequest) returns(SetRateGpsInfoResponse) {}
 
 }
 
-message SubscribeGPSInfoRequest {}
-message GPSInfoResponse {
-    GPSInfo gpsinfo = 1; // The next position
+message SubscribeGpsInfoRequest {}
+message GpsInfoResponse {
+    GpsInfo gpsinfo = 1; // The next GPSinfo
 }
 
-message SetRateGPSInfoRequest {
+message SetRateGpsInfoRequest {
     double rate_hz = 1; // The requested rate (in Hertz)
 }
-message SetRateGPSInfoResponse {
-    TelemetryResult telemetry_result = 1;
+message SetRateGpsInfoResponse {
+    GpsInfoResult gpsinfo_result = 1;
 }
 
-// Position type in global coordinates.
-message GPSInfo {
+// GPSinfo type in global coordinates.
+message GpsInfo {
     double time_week_ms = 1 [(mavsdk.options.default_value)="NaN"]; // GPS time (from start of GPS week)
     double time_week = 2 [(mavsdk.options.default_value)="NaN"]; // GPS week number
 }
 
 // Result type.
-message TelemetryResult {
+message GpsInfoResult {
     // Possible results returned for telemetry requests.
     enum Result {
         RESULT_UNKNOWN = 0; // Unknown result
