@@ -1,0 +1,26 @@
+service FmrService {
+    // Subscribe to 'position' updates.
+    rpc SubscribePosition(SubscribeGPSInfoRequest) returns(stream GPSInfoResponse) {}
+
+    // Set rate to 'position' updates.
+    rpc SetRatePosition(SetRateGPSInfoRequest) returns(SetRateGPSInfoResponse) {}
+
+}
+
+message SubscribePositionRequest {}
+message GPSInfoResponse {
+    GPSInfo gpsinfo = 1; // The next position
+}
+
+message SetRateGPSInfoRequest {
+    double rate_hz = 1; // The requested rate (in Hertz)
+}
+message SetRateGPSInfoResponse {
+    TelemetryResult telemetry_result = 1;
+}
+
+// Position type in global coordinates.
+message GPSInfo {
+    uint32_t time_week_ms = 1 [(mavsdk.options.default_value)="NaN"]; // GPS time (from start of GPS week)
+    uint16_t time_week = 2 [(mavsdk.options.default_value)="NaN"]; // GPS week number
+}
