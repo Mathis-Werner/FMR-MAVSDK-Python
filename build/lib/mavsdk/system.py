@@ -38,7 +38,7 @@ from . import tracking_server
 from . import transponder
 from . import tune
 from . import winch
-from . import fmr_proto
+from . import fmr
 
 from . import bin
 
@@ -164,7 +164,7 @@ class System:
         self._plugins["transponder"] = transponder.Transponder(plugin_manager)
         self._plugins["tune"] = tune.Tune(plugin_manager)
         self._plugins["winch"] = winch.Winch(plugin_manager)
-        self._plugins["fmr_proto"] = fmr_proto.FmrProto(plugin_manager)
+        self._plugins["fmr"] = fmr.Fmr(plugin_manager)
 
     @staticmethod
     def error_uninitialized(plugin_name: str) -> str:
@@ -370,10 +370,10 @@ class System:
         return self._plugins["winch"]
     
     @property
-    def fmr_proto(self) -> fmr_proto.FmrProto:
-        if "fmr_proto" not in self._plugins:
-            raise RuntimeError(self.error_uninitialized("fmr_proto"))
-        return self._plugins["fmr_proto"]
+    def fmr(self) -> fmr.Fmr:
+        if "fmr" not in self._plugins:
+            raise RuntimeError(self.error_uninitialized("fmr"))
+        return self._plugins["fmr"]
 
     @staticmethod
     def _start_mavsdk_server(system_address, port, sysid, compid):

@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from . import fmr_proto_pb2 as fmr__proto_dot_fmr__proto__pb2
+from . import fmr_pb2 as fmr_dot_fmr__pb2
 
 GRPC_GENERATED_VERSION = '1.71.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in fmr_proto/fmr_proto_pb2_grpc.py depends on'
+        + f' but the generated code in fmr/fmr_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -35,14 +35,14 @@ class FmrServiceStub(object):
             channel: A grpc.Channel.
         """
         self.SubscribePosition = channel.unary_stream(
-                '/mavsdk.rpc.camera.FmrService/SubscribePosition',
-                request_serializer=fmr__proto_dot_fmr__proto__pb2.SubscribeGPSInfoRequest.SerializeToString,
-                response_deserializer=fmr__proto_dot_fmr__proto__pb2.GPSInfoResponse.FromString,
+                '/mavsdk.rpc.fmr.FmrService/SubscribePosition',
+                request_serializer=fmr_dot_fmr__pb2.SubscribeGPSInfoRequest.SerializeToString,
+                response_deserializer=fmr_dot_fmr__pb2.GPSInfoResponse.FromString,
                 _registered_method=True)
         self.SetRatePosition = channel.unary_unary(
-                '/mavsdk.rpc.camera.FmrService/SetRatePosition',
-                request_serializer=fmr__proto_dot_fmr__proto__pb2.SetRateGPSInfoRequest.SerializeToString,
-                response_deserializer=fmr__proto_dot_fmr__proto__pb2.SetRateGPSInfoResponse.FromString,
+                '/mavsdk.rpc.fmr.FmrService/SetRatePosition',
+                request_serializer=fmr_dot_fmr__pb2.SetRateGPSInfoRequest.SerializeToString,
+                response_deserializer=fmr_dot_fmr__pb2.SetRateGPSInfoResponse.FromString,
                 _registered_method=True)
 
 
@@ -68,19 +68,19 @@ def add_FmrServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'SubscribePosition': grpc.unary_stream_rpc_method_handler(
                     servicer.SubscribePosition,
-                    request_deserializer=fmr__proto_dot_fmr__proto__pb2.SubscribeGPSInfoRequest.FromString,
-                    response_serializer=fmr__proto_dot_fmr__proto__pb2.GPSInfoResponse.SerializeToString,
+                    request_deserializer=fmr_dot_fmr__pb2.SubscribeGPSInfoRequest.FromString,
+                    response_serializer=fmr_dot_fmr__pb2.GPSInfoResponse.SerializeToString,
             ),
             'SetRatePosition': grpc.unary_unary_rpc_method_handler(
                     servicer.SetRatePosition,
-                    request_deserializer=fmr__proto_dot_fmr__proto__pb2.SetRateGPSInfoRequest.FromString,
-                    response_serializer=fmr__proto_dot_fmr__proto__pb2.SetRateGPSInfoResponse.SerializeToString,
+                    request_deserializer=fmr_dot_fmr__pb2.SetRateGPSInfoRequest.FromString,
+                    response_serializer=fmr_dot_fmr__pb2.SetRateGPSInfoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'mavsdk.rpc.camera.FmrService', rpc_method_handlers)
+            'mavsdk.rpc.fmr.FmrService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('mavsdk.rpc.camera.FmrService', rpc_method_handlers)
+    server.add_registered_method_handlers('mavsdk.rpc.fmr.FmrService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -101,9 +101,9 @@ class FmrService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/mavsdk.rpc.camera.FmrService/SubscribePosition',
-            fmr__proto_dot_fmr__proto__pb2.SubscribeGPSInfoRequest.SerializeToString,
-            fmr__proto_dot_fmr__proto__pb2.GPSInfoResponse.FromString,
+            '/mavsdk.rpc.fmr.FmrService/SubscribePosition',
+            fmr_dot_fmr__pb2.SubscribeGPSInfoRequest.SerializeToString,
+            fmr_dot_fmr__pb2.GPSInfoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -128,9 +128,9 @@ class FmrService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/mavsdk.rpc.camera.FmrService/SetRatePosition',
-            fmr__proto_dot_fmr__proto__pb2.SetRateGPSInfoRequest.SerializeToString,
-            fmr__proto_dot_fmr__proto__pb2.SetRateGPSInfoResponse.FromString,
+            '/mavsdk.rpc.fmr.FmrService/SetRatePosition',
+            fmr_dot_fmr__pb2.SetRateGPSInfoRequest.SerializeToString,
+            fmr_dot_fmr__pb2.SetRateGPSInfoResponse.FromString,
             options,
             channel_credentials,
             insecure,

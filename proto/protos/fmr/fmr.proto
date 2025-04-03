@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package mavsdk.rpc.camera;
+package mavsdk.rpc.fmr;
 
 import "mavsdk_options.proto";
 
-option java_package = "io.mavsdk.fmr_proto";
-option java_outer_classname = "FmrProtoProto";
+option java_package = "io.mavsdk.fmr";
+option java_outer_classname = "FmrProto";
 
 service FmrService {
     // Subscribe to 'position' updates.

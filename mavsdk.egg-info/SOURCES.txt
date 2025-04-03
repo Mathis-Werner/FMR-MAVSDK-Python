@@ -45,9 +45,9 @@ mavsdk/events_pb2_grpc.py
 mavsdk/failure.py
 mavsdk/failure_pb2.py
 mavsdk/failure_pb2_grpc.py
-mavsdk/fmr_proto.py
-mavsdk/fmr_proto_pb2.py
-mavsdk/fmr_proto_pb2_grpc.py
+mavsdk/fmr.py
+mavsdk/fmr_pb2.py
+mavsdk/fmr_pb2_grpc.py
 mavsdk/follow_me.py
 mavsdk/follow_me_pb2.py
 mavsdk/follow_me_pb2_grpc.py

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: mavsdk
-Version: 0.1.0.post1+gd26ab55
+Version: 0.1.1
 Summary: Python wrapper for MAVSDK
 Home-page: https://github.com/mavlink/MAVSDK-Python
 Maintainer: Jonas Vautherin, Julian Oes
