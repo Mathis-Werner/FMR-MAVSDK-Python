@@ -214,7 +214,7 @@ class TelemetryResult:
         """ Translates a gRPC struct to the SDK equivalent """
         return TelemetryResult(
                 
-                Result.translate_from_rpc(rpcTelemetryResult.result),
+                TelemetryResult.Result.translate_from_rpc(rpcTelemetryResult.result),
                 
                 
                 rpcTelemetryResult.result_str

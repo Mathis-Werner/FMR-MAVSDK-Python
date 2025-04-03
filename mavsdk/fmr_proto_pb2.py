@@ -25,31 +25,32 @@ _sym_db = _symbol_database.Default()
 from . import mavsdk_options_pb2 as mavsdk__options__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19\x66mr_proto/fmr_proto.proto\x1a\x14mavsdk_options.proto\"\x19\n\x17SubscribeGPSInfoRequest\",\n\x0fGPSInfoResponse\x12\x19\n\x07gpsinfo\x18\x01 \x01(\x0b\x32\x08.GPSInfo\"(\n\x15SetRateGPSInfoRequest\x12\x0f\n\x07rate_hz\x18\x01 \x01(\x01\"D\n\x16SetRateGPSInfoResponse\x12*\n\x10telemetry_result\x18\x01 \x01(\x0b\x32\x10.TelemetryResult\"D\n\x07GPSInfo\x12\x1d\n\x0ctime_week_ms\x18\x01 \x01(\x01\x42\x07\x82\xb5\x18\x03NaN\x12\x1a\n\ttime_week\x18\x02 \x01(\x01\x42\x07\x82\xb5\x18\x03NaN\"\x8c\x02\n\x0fTelemetryResult\x12\'\n\x06result\x18\x01 \x01(\x0e\x32\x17.TelemetryResult.Result\x12\x12\n\nresult_str\x18\x02 \x01(\t\"\xbb\x01\n\x06Result\x12\x12\n\x0eRESULT_UNKNOWN\x10\x00\x12\x12\n\x0eRESULT_SUCCESS\x10\x01\x12\x14\n\x10RESULT_NO_SYSTEM\x10\x02\x12\x1b\n\x17RESULT_CONNECTION_ERROR\x10\x03\x12\x0f\n\x0bRESULT_BUSY\x10\x04\x12\x19\n\x15RESULT_COMMAND_DENIED\x10\x05\x12\x12\n\x0eRESULT_TIMEOUT\x10\x06\x12\x16\n\x12RESULT_UNSUPPORTED\x10\x07\x32\x97\x01\n\nFmrService\x12\x43\n\x11SubscribePosition\x12\x18.SubscribeGPSInfoRequest\x1a\x10.GPSInfoResponse\"\x00\x30\x01\x12\x44\n\x0fSetRatePosition\x12\x16.SetRateGPSInfoRequest\x1a\x17.SetRateGPSInfoResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19\x66mr_proto/fmr_proto.proto\x12\x11mavsdk.rpc.camera\x1a\x14mavsdk_options.proto\"\x19\n\x17SubscribeGPSInfoRequest\">\n\x0fGPSInfoResponse\x12+\n\x07gpsinfo\x18\x01 \x01(\x0b\x32\x1a.mavsdk.rpc.camera.GPSInfo\"(\n\x15SetRateGPSInfoRequest\x12\x0f\n\x07rate_hz\x18\x01 \x01(\x01\"V\n\x16SetRateGPSInfoResponse\x12<\n\x10telemetry_result\x18\x01 \x01(\x0b\x32\".mavsdk.rpc.camera.TelemetryResult\"D\n\x07GPSInfo\x12\x1d\n\x0ctime_week_ms\x18\x01 \x01(\x01\x42\x07\x82\xb5\x18\x03NaN\x12\x1a\n\ttime_week\x18\x02 \x01(\x01\x42\x07\x82\xb5\x18\x03NaN\"\x9e\x02\n\x0fTelemetryResult\x12\x39\n\x06result\x18\x01 \x01(\x0e\x32).mavsdk.rpc.camera.TelemetryResult.Result\x12\x12\n\nresult_str\x18\x02 \x01(\t\"\xbb\x01\n\x06Result\x12\x12\n\x0eRESULT_UNKNOWN\x10\x00\x12\x12\n\x0eRESULT_SUCCESS\x10\x01\x12\x14\n\x10RESULT_NO_SYSTEM\x10\x02\x12\x1b\n\x17RESULT_CONNECTION_ERROR\x10\x03\x12\x0f\n\x0bRESULT_BUSY\x10\x04\x12\x19\n\x15RESULT_COMMAND_DENIED\x10\x05\x12\x12\n\x0eRESULT_TIMEOUT\x10\x06\x12\x16\n\x12RESULT_UNSUPPORTED\x10\x07\x32\xdf\x01\n\nFmrService\x12g\n\x11SubscribePosition\x12*.mavsdk.rpc.camera.SubscribeGPSInfoRequest\x1a\".mavsdk.rpc.camera.GPSInfoResponse\"\x00\x30\x01\x12h\n\x0fSetRatePosition\x12(.mavsdk.rpc.camera.SetRateGPSInfoRequest\x1a).mavsdk.rpc.camera.SetRateGPSInfoResponse\"\x00\x42$\n\x13io.mavsdk.fmr_protoB\rFmrProtoProtob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'fmr_proto.fmr_proto_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
-  DESCRIPTOR._loaded_options = None
+  _globals['DESCRIPTOR']._loaded_options = None
+  _globals['DESCRIPTOR']._serialized_options = b'\n\023io.mavsdk.fmr_protoB\rFmrProtoProto'
   _globals['_GPSINFO'].fields_by_name['time_week_ms']._loaded_options = None
   _globals['_GPSINFO'].fields_by_name['time_week_ms']._serialized_options = b'\202\265\030\003NaN'
   _globals['_GPSINFO'].fields_by_name['time_week']._loaded_options = None
   _globals['_GPSINFO'].fields_by_name['time_week']._serialized_options = b'\202\265\030\003NaN'
-  _globals['_SUBSCRIBEGPSINFOREQUEST']._serialized_start=51
-  _globals['_SUBSCRIBEGPSINFOREQUEST']._serialized_end=76
-  _globals['_GPSINFORESPONSE']._serialized_start=78
-  _globals['_GPSINFORESPONSE']._serialized_end=122
-  _globals['_SETRATEGPSINFOREQUEST']._serialized_start=124
-  _globals['_SETRATEGPSINFOREQUEST']._serialized_end=164
-  _globals['_SETRATEGPSINFORESPONSE']._serialized_start=166
-  _globals['_SETRATEGPSINFORESPONSE']._serialized_end=234
-  _globals['_GPSINFO']._serialized_start=236
-  _globals['_GPSINFO']._serialized_end=304
-  _globals['_TELEMETRYRESULT']._serialized_start=307
-  _globals['_TELEMETRYRESULT']._serialized_end=575
-  _globals['_TELEMETRYRESULT_RESULT']._serialized_start=388
-  _globals['_TELEMETRYRESULT_RESULT']._serialized_end=575
-  _globals['_FMRSERVICE']._serialized_start=578
-  _globals['_FMRSERVICE']._serialized_end=729
+  _globals['_SUBSCRIBEGPSINFOREQUEST']._serialized_start=70
+  _globals['_SUBSCRIBEGPSINFOREQUEST']._serialized_end=95
+  _globals['_GPSINFORESPONSE']._serialized_start=97
+  _globals['_GPSINFORESPONSE']._serialized_end=159
+  _globals['_SETRATEGPSINFOREQUEST']._serialized_start=161
+  _globals['_SETRATEGPSINFOREQUEST']._serialized_end=201
+  _globals['_SETRATEGPSINFORESPONSE']._serialized_start=203
+  _globals['_SETRATEGPSINFORESPONSE']._serialized_end=289
+  _globals['_GPSINFO']._serialized_start=291
+  _globals['_GPSINFO']._serialized_end=359
+  _globals['_TELEMETRYRESULT']._serialized_start=362
+  _globals['_TELEMETRYRESULT']._serialized_end=648
+  _globals['_TELEMETRYRESULT_RESULT']._serialized_start=461
+  _globals['_TELEMETRYRESULT_RESULT']._serialized_end=648
+  _globals['_FMRSERVICE']._serialized_start=651
+  _globals['_FMRSERVICE']._serialized_end=874
 # @@protoc_insertion_point(module_scope)

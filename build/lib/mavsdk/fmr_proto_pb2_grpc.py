@@ -35,12 +35,12 @@ class FmrServiceStub(object):
             channel: A grpc.Channel.
         """
         self.SubscribePosition = channel.unary_stream(
-                '/FmrService/SubscribePosition',
+                '/mavsdk.rpc.camera.FmrService/SubscribePosition',
                 request_serializer=fmr__proto_dot_fmr__proto__pb2.SubscribeGPSInfoRequest.SerializeToString,
                 response_deserializer=fmr__proto_dot_fmr__proto__pb2.GPSInfoResponse.FromString,
                 _registered_method=True)
         self.SetRatePosition = channel.unary_unary(
-                '/FmrService/SetRatePosition',
+                '/mavsdk.rpc.camera.FmrService/SetRatePosition',
                 request_serializer=fmr__proto_dot_fmr__proto__pb2.SetRateGPSInfoRequest.SerializeToString,
                 response_deserializer=fmr__proto_dot_fmr__proto__pb2.SetRateGPSInfoResponse.FromString,
                 _registered_method=True)
@@ -78,9 +78,9 @@ def add_FmrServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'FmrService', rpc_method_handlers)
+            'mavsdk.rpc.camera.FmrService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('FmrService', rpc_method_handlers)
+    server.add_registered_method_handlers('mavsdk.rpc.camera.FmrService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -101,7 +101,7 @@ class FmrService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/FmrService/SubscribePosition',
+            '/mavsdk.rpc.camera.FmrService/SubscribePosition',
             fmr__proto_dot_fmr__proto__pb2.SubscribeGPSInfoRequest.SerializeToString,
             fmr__proto_dot_fmr__proto__pb2.GPSInfoResponse.FromString,
             options,
@@ -128,7 +128,7 @@ class FmrService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/FmrService/SetRatePosition',
+            '/mavsdk.rpc.camera.FmrService/SetRatePosition',
             fmr__proto_dot_fmr__proto__pb2.SetRateGPSInfoRequest.SerializeToString,
             fmr__proto_dot_fmr__proto__pb2.SetRateGPSInfoResponse.FromString,
             options,
